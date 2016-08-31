@@ -1,4 +1,4 @@
-package thirdpartylibrary;
+package thirdpartyutility;
 
 import android.content.Context;
 import android.widget.Toast;

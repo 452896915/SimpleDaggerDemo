@@ -1,6 +1,7 @@
 package com.magic.wangdongliang.simpledaggerdemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,20 +10,24 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import thirdpartylibrary.ThirdPartyUtility;
+import javax.inject.Inject;
+
+import thirdpartyutility.ThirdPartyUtility;
 
 /**
  * Created by wangdongliang on 16/8/30.
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context context;
     private ArrayList<String> dataList = new ArrayList<>();
 
-    private ThirdPartyUtility utility;
+    @Inject
+    ThirdPartyUtility thirdPartyUtility;
 
-    public RecyclerViewAdapter(Context context, ThirdPartyUtility utility) {
-        this.context = context;
-        this.utility = utility;
+    @Inject
+    Context context;
+
+    @Inject
+    public RecyclerViewAdapter() {
     }
 
     public void setDataList(ArrayList<String> dataList) {
@@ -49,7 +54,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                utility.showToast(content);
+                thirdPartyUtility.showToast(content);
+
+                Intent intent = new Intent(context, SecondActivity.class);
+                context.startActivity(intent);
             }
         });
     }
