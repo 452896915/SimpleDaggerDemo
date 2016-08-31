@@ -20,9 +20,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private ThirdPartyUtility utility;
 
-    public RecyclerViewAdapter(Context context, ThirdPartyUtility utility) {
+    public RecyclerViewAdapter(Context context) {
         this.context = context;
-        this.utility = utility;
+        this.utility = new ThirdPartyUtility(context);
     }
 
     public void setDataList(ArrayList<String> dataList) {

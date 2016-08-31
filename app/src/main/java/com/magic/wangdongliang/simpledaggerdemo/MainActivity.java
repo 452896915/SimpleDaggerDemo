@@ -4,21 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.View;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import thirdpartylibrary.ThirdPartyUtility;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
     private RecyclerViewAdapter viewAdapter;
-    private ThirdPartyUtility utility;
 
     private ArrayList<String> dateList = new ArrayList<>();
 
@@ -29,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        utility = new ThirdPartyUtility(this);
-        viewAdapter = new RecyclerViewAdapter(this, utility);
+        viewAdapter = new RecyclerViewAdapter(this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false){});
         mRecyclerView.setAdapter(viewAdapter);
